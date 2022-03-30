@@ -1,14 +1,25 @@
-DELETE http://polytech-s6-ihm-api.test/user/delete
+PUT http://ihm-api.test/user/edit
 Content-Type: application/json
 
 {
     "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
-    "session_token": "$2y$10$n.mZCORjdjJ6ydKK596VC.iPpX6aTXLqFqL.8ohsFQRVqpyxe.1hW",
+    "session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy",
+    "password": "test",
+    "name": "Farino"
+}
+
+###
+DELETE http://ihm-api.test/user/delete
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy",
     "password": "test"
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/register
+POST http://ihm-api.test/user/register
 Content-Type: application/json
 
 {
@@ -21,7 +32,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/register
+POST http://ihm-api.test/user/register
 Content-Type: application/json
 
 {
@@ -34,7 +45,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/register
+POST http://ihm-api.test/user/register
 Content-Type: application/json
 
 {
@@ -47,7 +58,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/register
+POST http://ihm-api.test/user/register
 Content-Type: application/json
 
 {
@@ -56,7 +67,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/login
+POST http://ihm-api.test/user/login
 Content-Type: application/json
 
 {
@@ -65,7 +76,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/login
+POST http://ihm-api.test/user/login
 Content-Type: application/json
 
 {
@@ -75,7 +86,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/login
+POST http://ihm-api.test/user/login
 Content-Type: application/json
 
 {
@@ -85,7 +96,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/login
+POST http://ihm-api.test/user/login
 Content-Type: application/json
 
 {
@@ -95,7 +106,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user/login
+POST http://ihm-api.test/user/login
 Content-Type: application/json
 
 {
@@ -105,7 +116,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user
+POST http://ihm-api.test/user
 Content-Type: application/json
 
 {
@@ -114,7 +125,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user
+POST http://ihm-api.test/user
 Content-Type: application/json
 
 {
@@ -123,7 +134,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://polytech-s6-ihm-api.test/user
+POST http://ihm-api.test/user
 Content-Type: application/json
 
 {
@@ -132,11 +143,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://polytech-s6-ihm-api.test/user/1
+GET http://ihm-api.test/user/1
 Accept: application/json
 
 ###
-GET http://polytech-s6-ihm-api.test/user/2000
+GET http://ihm-api.test/user/2000
 Accept: application/json
 
 ###

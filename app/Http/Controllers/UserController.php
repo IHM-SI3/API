@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
@@ -75,7 +73,7 @@ class UserController extends Controller
         $user = User::where('email', $email)->first();
         if (!Hash::check($password, $user->password)) return response()->json(['password' => "Incorrect password."], 422);
         $session_token = Hash::make(time());
-        User::where('email', $email)->first()->update(['session_token' => $session_token]);
+        $user->update(['session_token' => $session_token]);
         $user = User::where('email', $email)->first();
         return response()->json($user->session_token);
     }
@@ -133,5 +131,55 @@ class UserController extends Controller
         $id = $user->id;
         $user->delete();
         return response()->json(['message' => "User {$id} deleted."]);
+    }
+
+    public function edit(Request $request): JsonResponse
+    {
+        $this->validate($request, [
+            'token' => 'required',
+            'session_token' => 'required|exists:users',
+            'password' => 'required',
+            'email' => 'nullable',
+            'dob' => 'nullable',
+            'name' => 'nullable',
+            'firstname' => 'nullable',
+            'address' => 'nullable',
+            'additional_address' => 'nullable',
+            'city' => 'nullable',
+            'postal' => 'nullable',
+            'new_password' => 'nullable',
+            'confirm_new_password' => 'nullable|same:new_password'
+        ]);
+        $input = $request->input();
+        $token = $input['token'];
+        $session_token = $input['session_token'];
+        $password = $input['password'];
+        if ($token != env("API_KEY")) {
+            return response()->json([
+                'message' => 'API key not valid.'
+            ], 403);
+        }
+        $user = User::where('session_token', $session_token)->first();
+        if (!Hash::check($password, $user->password)) return response()->json(['password' => "Incorrect password."], 422);
+        if (isset($input['email']))
+            $user->update(['email' => $input['email']]);
+        if (isset($input['dob']))
+            $user->update(['email' => $input['email']]);
+        if (isset($input['name']))
+            $user->update(['name' => $input['name']]);
+        if (isset($input['firstname']))
+            $user->update(['firstname' => $input['firstname']]);
+        if (isset($input['address']))
+            $user->update(['address' => $input['address']]);
+        if (isset($input['additional_address']))
+            $user->update(['additional_address' => $input['additional_address']]);
+        if (isset($input['city']))
+            $user->update(['city' => $input['city']]);
+        if (isset($input['postal']))
+            $user->update(['postal' => $input['postal']]);
+        if (isset($input['new_password']))
+            $user->update(['password' => $input['new_password']]);
+        $id = $user->id;
+        return response()->json(['message' => "User {$id} edited."]);
     }
 }
