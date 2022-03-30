@@ -1,0 +1,34 @@
+POST http://ihm-api.test/inventory/create
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy",
+    "label": "Inventaire de Thomas",
+    "expiry": "2022-05-10"
+}
+
+###
+POST http://ihm-api.test/inventory/create
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy",
+    "label": "Inventaire de Thomas"
+}
+
+###
+POST http://ihm-api.test/inventory
+Content-Type: application/json
+
+{
+"token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+"session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy"
+}
+
+###
+GET http://ihm-api.test/inventory/1
+Accept: application/json
+
+###

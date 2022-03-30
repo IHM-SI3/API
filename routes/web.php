@@ -1,6 +1,6 @@
 <?php
 
-/** @var \Laravel\Lumen\Routing\Router $router */
+/** @var Router $router */
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +12,8 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+
+use Laravel\Lumen\Routing\Router;
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
@@ -28,36 +30,17 @@ $router->group(['prefix' => 'user'], function () use ($router) {
 });
 
 $router->group(['prefix' => 'inventory'], function () use ($router) {
-    $router->get('{id}', function () {
-        echo "oui";
-    });
-    $router->post('', function () {
-        echo "oui";
-    });
-    $router->post('create', function () {
-        echo "oui";
-    });
-    $router->post('delete', function () {
-        echo "oui";
-    });
-    $router->post('edit', function () {
-        echo "oui";
-    });
+    $router->get('{id}', 'InventoryController@get');
+    $router->post('', 'InventoryController@getAll');
+    $router->post('create', 'InventoryController@create');
+    $router->delete('delete', 'InventoryController@delete');
+    $router->put('edit', 'InventoryController@edit');
+
     $router->group(['prefix' => 'product'], function () use ($router) {
-        $router->get('{id}', function () {
-            echo "oui";
-        });
-        $router->post('', function () {
-            echo "oui";
-        });
-        $router->post('add', function () {
-            echo "oui";
-        });
-        $router->put('edit', function () {
-            echo "oui";
-        });
-        $router->delete('delete', function () {
-            echo "oui";
-        });
+        $router->get('{id}', 'ProductController@get');
+        $router->post('', 'ProductController@getAll');
+        $router->post('add', 'ProductController@add');
+        $router->put('edit', 'ProductController@edit');
+        $router->delete('delete', 'ProductController@delete');
     });
 });
