@@ -1,0 +1,84 @@
+POST http://polytech-s6-ihm-api.test/user/login
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@icloud.com"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/login
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farinepau@icloud.com",
+    "password": "1234"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/login
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@icloud.com",
+    "password": "1234"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/login
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@icloud.com",
+    "password": "oui"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/login
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "oui",
+    "password": "oui"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "session_token": "oui"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user
+Content-Type: application/json
+
+{
+    "token": "bleruheibuari",
+    "session_token": "oui"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "session_token": null
+}
+
+###
+GET http://polytech-s6-ihm-api.test/user/1
+Accept: application/json
+
+###
+GET http://polytech-s6-ihm-api.test/user/2000
+Accept: application/json
+
+###

@@ -16,3 +16,52 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'user'], function () use ($router) {
+    $router->get('{id}', 'UserController@get');
+    $router->post('', 'UserController@getAll');
+    $router->post('register', 'UserController@register');
+    $router->post('login', 'UserController@login');
+    $router->post('logout', 'UserController@logout');
+    $router->delete('delete', function () {
+        echo "oui";
+    });
+    $router->put('edit', function () {
+        echo "oui";
+    });
+});
+
+$router->group(['prefix' => 'inventory'], function () use ($router) {
+    $router->get('{id}', function () {
+        echo "oui";
+    });
+    $router->post('', function () {
+        echo "oui";
+    });
+    $router->post('create', function () {
+        echo "oui";
+    });
+    $router->post('delete', function () {
+        echo "oui";
+    });
+    $router->post('edit', function () {
+        echo "oui";
+    });
+    $router->group(['prefix' => 'product'], function () use ($router) {
+        $router->get('{id}', function () {
+            echo "oui";
+        });
+        $router->post('', function () {
+            echo "oui";
+        });
+        $router->post('add', function () {
+            echo "oui";
+        });
+        $router->put('edit', function () {
+            echo "oui";
+        });
+        $router->delete('delete', function () {
+            echo "oui";
+        });
+    });
+});
