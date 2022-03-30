@@ -36,6 +36,9 @@ class UserController extends Controller
 
     public function getAll(Request $request): JsonResponse
     {
+        $this->validate($request, [
+            'session_token' => 'required|exists:users',
+        ]);
         $input = $request->input();
         $token = $input['token'];
         $session_token = $input['session_token'];
@@ -77,5 +80,58 @@ class UserController extends Controller
         return response()->json($user->session_token);
     }
 
-    //
+    public function register(Request $request): JsonResponse
+    {
+        $this->validate($request, [
+            'token' => 'required',
+            'email' => 'required|email|unique:users',
+            'firstname' => 'required',
+            'name' => 'required',
+            'password' => 'required',
+            'password_confirm' => 'required|same:password'
+        ]);
+        $input = $request->input();
+        $token = $input['token'];
+        $email = $input['email'];
+        $password = Hash::make($input['password']);
+        $firstname = $input['firstname'];
+        $name = $input['name'];
+        if ($token != env("API_KEY")) {
+            return response()->json([
+                'message' => 'API key not valid.'
+            ], 403);
+        }
+        $session_token = Hash::make(time());
+        $user = User::create([
+            'name' => $name,
+            'firstname' => $firstname,
+            'password' => $password,
+            'email' => $email,
+            'session_token' => $session_token
+        ]);
+        return response()->json($user->session_token, 201);
+    }
+
+    public function delete(Request $request): JsonResponse
+    {
+        $this->validate($request, [
+            'token' => 'required',
+            'session_token' => 'required|exists:users',
+            'password' => 'required'
+        ]);
+        $input = $request->input();
+        $token = $input['token'];
+        $session_token = $input['session_token'];
+        $password = $input['password'];
+        if ($token != env("API_KEY")) {
+            return response()->json([
+                'message' => 'API key not valid.'
+            ], 403);
+        }
+        $user = User::where('session_token', $session_token)->first();
+        if (!Hash::check($password, $user->password)) return response()->json(['password' => "Incorrect password."], 422);
+        $id = $user->id;
+        $user->delete();
+        return response()->json(['message' => "User {$id} deleted."]);
+    }
 }

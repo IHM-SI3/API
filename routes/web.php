@@ -23,12 +23,8 @@ $router->group(['prefix' => 'user'], function () use ($router) {
     $router->post('register', 'UserController@register');
     $router->post('login', 'UserController@login');
     $router->post('logout', 'UserController@logout');
-    $router->delete('delete', function () {
-        echo "oui";
-    });
-    $router->put('edit', function () {
-        echo "oui";
-    });
+    $router->delete('delete', 'UserController@delete');
+    $router->put('edit', 'UserController@edit');
 });
 
 $router->group(['prefix' => 'inventory'], function () use ($router) {

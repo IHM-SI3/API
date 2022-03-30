@@ -1,3 +1,61 @@
+DELETE http://polytech-s6-ihm-api.test/user/delete
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "session_token": "$2y$10$n.mZCORjdjJ6ydKK596VC.iPpX6aTXLqFqL.8ohsFQRVqpyxe.1hW",
+    "password": "test"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/register
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@gmail.com",
+    "password": "test",
+    "password_confirm": "test",
+    "name": "Farineau",
+    "firstname": "Thomas"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/register
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@gmail.com",
+    "password": "test",
+    "password_confirm": "test",
+    "name": "Farineau",
+    "firstname": "Thomas"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/register
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@icloud.com",
+    "password": "test",
+    "password_confirm": "testa",
+    "name": "test",
+    "firstname": "test"
+}
+
+###
+POST http://polytech-s6-ihm-api.test/user/register
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@icloud.com"
+}
+
+###
 POST http://polytech-s6-ihm-api.test/user/login
 Content-Type: application/json
 
