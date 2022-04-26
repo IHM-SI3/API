@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
-use App\Models\InventoryProduct;
+use App\Models\InventoryProducts;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -35,13 +35,13 @@ class ProductController extends Controller
                 'message' => 'API key not valid.'
             ], 403);
         }
-        $products = InventoryProduct::where('inventory_id', $inv)->get();
-        return response()->json($products);
+        $products = InventoryProducts::where('inventory_id', $inv);
+        return response()->json($products->get());
     }
 
     public function get($id): JsonResponse
     {
-        $product = InventoryProduct::where('id', $id)->first();
+        $product = InventoryProducts::where('id', $id)->first();
         if (!$product) {
             return response()->json([], 204);
         }
@@ -75,7 +75,7 @@ class ProductController extends Controller
         $user = User::where('session_token', $session_token)->first();
         $inventory = Inventory::where('user_id', $user->id)->get();
         $products = Collection::empty();
-        foreach ($inventory as $i) $products->push(InventoryProduct::where('inventory_id', $i->id)->get());
+        foreach ($inventory as $i) $products->push(InventoryProducts::where('inventory_id', $i->id)->get());
         return response()->json($products);
     }
 
@@ -104,7 +104,7 @@ class ProductController extends Controller
         $user = User::where('session_token', $session_token)->first();
         $inv = Inventory::where('id', $inventory_id)->first();
         if ($inv->user_id == $user->id) {
-            $product = InventoryProduct::create([
+            $product = InventoryProducts::create([
                 'inventory_id' => $inventory_id,
                 'label' => $label,
                 'expiry' => $expiry,
@@ -131,7 +131,7 @@ class ProductController extends Controller
         if ($token != env("API_KEY")) return response()->json([
             'message' => 'API key not valid.'
         ], 403);
-        $product = InventoryProduct::where('id', $id)->first();
+        $product = InventoryProducts::where('id', $id)->first();
         $user = User::where('session_token', $session_token)->first();
         $inv = Inventory::where('id', $product->inventory_id)->first();
         if ($inv->user_id == $user->id) {
