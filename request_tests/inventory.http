@@ -28,7 +28,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://ihm-api.test/inventory/1
-Accept: application/json
+POST http://d8d8-109-210-108-136.eu.ngrok.io/inventory/product
+Content-Type: application/json
 
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "inventory_id": 3
+}
 ###
