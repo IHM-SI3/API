@@ -9,22 +9,22 @@ Content-Type: application/json
 }
 
 ###
-POST http://ihm-api.test/inventory/create
+POST http://d8d8-109-210-108-136.eu.ngrok.io/inventory/create
 Content-Type: application/json
 
 {
     "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
-    "session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy",
+    "session_token": "$2y$10$A3Bq5vr.Mz9CC/juTKJnHevX5QiQUNZ8h9Buscpx9W9PvFsDwxJwO",
     "label": "Inventaire de Thomas"
 }
 
 ###
-POST http://ihm-api.test/inventory
+POST http://d8d8-109-210-108-136.eu.ngrok.io/inventory
 Content-Type: application/json
 
 {
 "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
-"session_token": "$2y$10$uefNZ7goiIm.D4G.MKqdNOe5sgBSuXJ62MYifAAqdUy4d5NjorCvy"
+"session_token": "$2y$10$e9BN3UiHeeguIeYNlwXn1uu6dJx6rLBHshfn7GpkJADKBNZOy45VC"
 }
 
 ###

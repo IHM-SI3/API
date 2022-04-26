@@ -32,15 +32,14 @@ $router->group(['prefix' => 'user'], function () use ($router) {
 $router->group(['prefix' => 'inventory'], function () use ($router) {
     $router->get('{id}', 'InventoryController@get');
     $router->post('', 'InventoryController@getAll');
-    $router->post('create', 'InventoryController@create');
+    $router->post('create', 'InventoryController@add');
     $router->delete('delete', 'InventoryController@delete');
-    $router->put('edit', 'InventoryController@edit');
 
     $router->group(['prefix' => 'product'], function () use ($router) {
         $router->get('{id}', 'ProductController@get');
         $router->post('', 'ProductController@getAll');
-        $router->post('add', 'ProductController@add');
-        $router->put('edit', 'ProductController@edit');
+        $router->post('user', 'ProductController@getAllUser');
+        $router->post('create', 'ProductController@add');
         $router->delete('delete', 'ProductController@delete');
     });
 });

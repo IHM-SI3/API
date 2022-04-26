@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://ihm-api.test/user/register
+POST http://47a0-109-210-108-136.eu.ngrok.io/user/register
 Content-Type: application/json
 
 {
@@ -134,17 +134,13 @@ Content-Type: application/json
 }
 
 ###
-POST http://ihm-api.test/user
+POST http://ihm-api.test/user/
 Content-Type: application/json
 
 {
     "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
-    "session_token": null
+    "session_token": "$2y$10$44H98vBZHhlXu884lmbTm.n2Rs2ebvEoUTa/1heSguMz8k4PWHhb2"
 }
-
-###
-GET http://ihm-api.test/user/1
-Accept: application/json
 
 ###
 GET http://ihm-api.test/user/2000

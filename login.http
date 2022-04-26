@@ -1,0 +1,10 @@
+POST http://d8d8-109-210-108-136.eu.ngrok.io/user/login
+Content-Type: application/json
+
+{
+    "token": "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==",
+    "email": "thomas.farineau@icloud.com",
+    "password": "test"
+}
+
+###
