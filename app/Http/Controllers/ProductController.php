@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use App\Models\Inventories_Products;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -107,7 +108,7 @@ class ProductController extends Controller
             $product = Inventories_Products::create([
                 'inventory_id' => $inventory_id,
                 'label' => $label,
-                'expiry' => $expiry,
+                'expiry' => DateTime::createFromFormat("d/m/Y", $expiry),
                 'quantity' => $quantity
             ]);
             return response()->json(['message' => "Product {$product->id} created."]);
