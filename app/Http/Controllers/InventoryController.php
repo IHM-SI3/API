@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventories_Products;
 use App\Models\Inventory;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -106,7 +107,11 @@ class InventoryController extends Controller
         ], 403);
         $user = User::where('session_token', $session_token)->first();
         $inventory = Inventory::where('id', $id)->first();
+
+
         if($inventory->user_id == $user->id) {
+            $products = Inventories_Products::where('inventory_id', $id)->get();
+            foreach ($products as $p) $p->delete();
             $inventory->delete();
             return response()->json(['message' => "Inventory {$id} deleted."]);
         } else {
